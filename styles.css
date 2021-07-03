@@ -1,0 +1,663 @@
+@font-face {
+  font-family: 'DINPro';
+  src: url('fonts/din_pro.eot');
+  src: url('fonts/din_pro.eot?#iefix') format('embedded-opentype'),
+    url('fonts/din_pro.woff2') format('woff2'),
+    url('fonts/din_pro.woff') format('woff'),
+    url('fonts/din_pro.ttf') format('truetype'),
+    url('fonts/din_pro.svg#din_pro') format('svg');
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('fonts/Gilroy-Regular.eot');
+  src: local('fonts/Gilroy Regular'), local('fonts/Gilroy-Regular'),
+    url('fonts/Gilroy-Regular.eot?#iefix') format('embedded-opentype'),
+    url('fonts/Gilroy-Regular.woff') format('woff'),
+    url('fonts/Gilroy-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('fonts/Gilroy-Black.eot');
+  src: local('fonts/Gilroy Black'), local('fonts/Gilroy-Black'),
+    url('fonts/Gilroy-Black.eot?#iefix') format('embedded-opentype'),
+    url('fonts/Gilroy-Black.woff') format('woff'),
+    url('fonts/Gilroy-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('fonts/Gilroy-Light.eot');
+  src: local('fonts/Gilroy Light'), local('fonts/Gilroy-Light'),
+    url('fonts/Gilroy-Light.eot?#iefix') format('embedded-opentype'),
+    url('fonts/Gilroy-Light.woff') format('woff'),
+    url('fonts/Gilroy-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('fonts/Gilroy-Thin.eot');
+  src: local('fonts/Gilroy Thin'), local('fonts/Gilroy-Thin'),
+    url('fonts/Gilroy-Thin.eot?#iefix') format('embedded-opentype'),
+    url('fonts/Gilroy-Thin.woff') format('woff'),
+    url('fonts/Gilroy-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  --slides-number: 1;
+  align-items: center;
+
+  width: 100%;
+  width: calc(var(--slides-number) * 100%);
+  height: 100vh;
+  max-height: 100vh;
+  transform: translate(
+    calc(
+      var(--x-difference, 0px) + var(--current-slide-index, 0) /
+        var(--slides-number) * -100%
+    )
+  );
+  user-select: auto;
+  pointer-events: all;
+}
+
+.page-1,
+.page-2,
+.page-3 {
+  min-width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.page-1 {
+  background-image: url('images/page1/bg.png');
+  background-color: #fff;
+  background-size: 100% 100%;
+}
+
+.container > div {
+  width: 100%;
+  width: calc(100% / var(--slides-number));
+  user-select: auto;
+  pointer-events: auto;
+}
+
+.smooth {
+  transition: transform calc(var(--factor, 1) * 0.5s) ease-out;
+}
+
+.home {
+  position: absolute;
+  z-index: 9999;
+  margin-left: 7%;
+  margin-top: 30px;
+}
+
+.home:hover {
+  cursor: pointer;
+}
+
+.logo {
+  position: absolute;
+  left: 7%;
+  bottom: 3%;
+  width: 58px;
+  height: 12px;
+  z-index: 98;
+}
+
+.greetings-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  text-transform: uppercase;
+  position: absolute;
+  left: 7%;
+  top: 12%;
+  z-index: 7;
+}
+
+.greetings-text {
+  font-size: 3vw;
+  font-family: 'DINPro';
+  font-weight: 100;
+  color: rgb(36, 36, 36);
+  line-height: 4.074;
+}
+
+.greetings-description {
+  font-size: 10vw;
+  font-family: 'Gilroy';
+  font-weight: 300;
+  color: rgb(23, 23, 23);
+  line-height: 1.073;
+  letter-spacing: 10px;
+}
+
+.btn-what-next {
+  position: absolute;
+  right: 5%;
+  bottom: 4%;
+  z-index: 98;
+  user-select: auto;
+  pointer-events: auto;
+}
+
+/*
+page 1 background images styles
+*/
+
+.bact1 {
+  position: absolute;
+  left: 22px;
+  top: 503px;
+  width: 74px;
+  height: 72px;
+  z-index: 4;
+}
+
+.bact2 {
+  position: absolute;
+  left: 542px;
+  top: 641px;
+  width: 228px;
+  height: 225px;
+  width: fit-content;
+  height: fit-content;
+  z-index: 12;
+}
+
+.bact3 {
+  position: absolute;
+  left: 744px;
+  top: 61px;
+  width: 63px;
+  height: 58px;
+  z-index: 15;
+}
+
+.bact4 {
+  position: absolute;
+  left: 0px;
+  top: 72px;
+  width: 100px;
+  height: 100px;
+  z-index: 16;
+}
+
+.bact5 {
+  position: absolute;
+  left: 861px;
+  top: 200px;
+  width: 111px;
+  height: 114px;
+  z-index: 17;
+}
+
+.bact6 {
+  position: absolute;
+  left: 917px;
+  top: 30px;
+  width: 71px;
+  height: 69px;
+  z-index: 14;
+}
+
+.bact7 {
+  position: absolute;
+  left: 347px;
+  top: 631px;
+  width: 85px;
+  height: 78px;
+  z-index: 13;
+}
+
+.sperm1 {
+  position: absolute;
+  left: 432px;
+  top: 155px;
+  width: 592px;
+  height: 93px;
+  z-index: 11;
+}
+
+.sperm2 {
+  position: absolute;
+  left: -134px;
+  top: 593px;
+  width: 414px;
+  height: 183px;
+  z-index: 3;
+}
+
+/*
+page 2 styles
+*/
+
+.page-2 {
+  background-image: url('images/page2/bg.png');
+  background-color: #fff;
+  background-size: 100% 100%;
+  user-select: auto;
+  pointer-events: auto;
+}
+
+.page-2-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-2-heading {
+  align-self: flex-start;
+  text-align: left;
+  margin-top: 115px;
+  margin-left: 60px;
+  text-transform: uppercase;
+  font-size: 28px;
+  font-family: 'DINPro';
+  font-weight: 200;
+  color: rgb(36, 36, 36);
+  line-height: 1.2;
+  text-align: left;
+  z-index: 30;
+}
+
+.page-2-text-block {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  direction: rtl;
+  margin-top: 100px;
+  border-radius: 40px;
+  position: absolute;
+  left: 119px;
+  top: 100px;
+  width: 775px;
+  height: 445px;
+  z-index: 28;
+  user-select: auto;
+  pointer-events: auto;
+}
+
+.page-2-text-block::-webkit-scrollbar {
+  width: 30px;
+  height: 100%;
+}
+
+.page-2-text-block::-webkit-scrollbar-track {
+  background-image: url(images/page2/track.png);
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 50px;
+}
+
+.page-2-text-block::-webkit-scrollbar-thumb {
+  background-image: url(images/page2/thumb.png);
+  background-position-x: center;
+  background-position-y: top;
+  background-repeat: no-repeat;
+  background-size: 23.7px;
+}
+
+.page-2-text {
+  line-height: 30px;
+  padding: 25px;
+  font-size: 22px;
+  font-family: 'DinPRO';
+  box-shadow: 2.723px 4.193px 116.25px 8.75px rgba(157, 185, 198, 0.39);
+  background-color: #fff;
+  text-align: left;
+}
+
+.page-2-text-wrapper {
+  border-radius: 40px;
+  margin-left: 40px;
+}
+
+/*
+page 2 background images styles
+*/
+
+.sperm3 {
+  opacity: 0.529;
+  position: absolute;
+  left: 300px;
+  top: 30px;
+  z-index: 22;
+  width: 731px;
+  height: 600px;
+}
+
+.sperm4 {
+  opacity: 0.49;
+  position: absolute;
+  left: 400px;
+  top: 411px;
+  z-index: 24;
+  width: 731px;
+  height: 700px;
+}
+
+.sperm5 {
+  opacity: 0.49;
+  position: absolute;
+  left: 500px;
+  top: 74px;
+  width: 414px;
+  height: 400px;
+  z-index: 25;
+}
+
+.sperm6 {
+  opacity: 0.49;
+  position: absolute;
+  left: 600px;
+  top: 515px;
+  width: 327px;
+  height: 300px;
+  z-index: 26;
+}
+
+.sperm7 {
+  position: absolute;
+  left: 50px;
+  top: 30px;
+  width: 1141px;
+  height: 1000px;
+  z-index: 23;
+}
+
+/* 
+page 3 styles
+ */
+
+.page-3 {
+  background-image: url('images/page3/bg.png');
+  background-color: #fff;
+
+  background-size: 100% 100%;
+  user-select: all;
+  pointer-events: all;
+}
+
+.page-3-block {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+.page-3-header {
+  position: absolute;
+  left: 33.5%;
+  top: 21%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
+}
+
+.page-3-header-name {
+  font-size: 2.5vw;
+  font-family: 'DINPro';
+  color: rgb(36, 36, 36);
+  text-transform: uppercase;
+  text-align: left;
+  z-index: 55;
+}
+
+.page-3-header-brand {
+  font-size: 9vw;
+  font-family: 'Gilroy';
+  color: rgb(36, 36, 36);
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  text-align: left;
+  margin-top: 5px;
+  z-index: 56;
+}
+
+.page-3-content {
+  margin-left: 10%;
+  margin-top: 20%;
+  display: flex;
+  justify-content: space-between;
+  width: 70vw;
+}
+
+.page-3-content-block-left {
+  background-color: rgb(255, 255, 255);
+  border-radius: 40px;
+  min-width: fit-content;
+  border-radius: 40px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2.723px 4.193px 116.25px 8.75px rgba(157, 185, 198, 0.39);
+  width: 414px;
+  height: 265px;
+  z-index: 38;
+}
+
+.page-3-content-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-3-content-block-right {
+  display: flex;
+  flex-direction: column;
+  border-radius: 40px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2.723px 4.193px 116.25px 8.75px rgba(157, 185, 198, 0.39);
+  width: 263px;
+  height: 150px;
+  z-index: 59;
+}
+
+.page-3-icon {
+  position: relative;
+  top: -10px;
+  left: 30%;
+  margin-top: -20px;
+  width: 70px;
+}
+
+.page-3-text {
+  margin-left: 30%;
+  margin-right: 10%;
+  margin-bottom: 20%;
+  font-size: 24px;
+  font-family: 'DinPRO';
+}
+
+.btn-what-next {
+  user-select: all;
+  pointer-events: all;
+}
+
+.btn-what-next:hover {
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 10, 35, 0.6);
+  user-select: auto;
+  pointer-events: auto;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  margin: auto;
+  padding: 0;
+  border-radius: 40px;
+  width: 80%;
+  height: 75%;
+  margin-top: 130px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation: fadein 0.4s;
+  animation: fadein 0.7s;
+}
+
+.close {
+  position: absolute;
+  right: 13%;
+  top: 20%;
+  width: 30px;
+  height: 30px;
+  z-index: 99;
+}
+
+.close:hover,
+.close:focus {
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 2px 16px;
+}
+.number {
+  font-size: 25px;
+  font-family: 'Gilroy';
+  color: rgb(140, 201, 232);
+  font-weight: bolder;
+  line-height: 1.2;
+}
+
+.modal-text {
+  font-size: 25px;
+  font-family: 'DinPRO';
+  color: rgb(46, 46, 46);
+  font-weight: 200;
+  line-height: 1.2;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.modal-content {
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  overflow: hidden;
+  width: 500px;
+  margin-top: 8%;
+  margin-left: 7%;
+}
+
+.modal-content-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
+  overflow: hidden;
+  width: 500px;
+  height: 300px;
+  margin-top: 50px;
+  margin-left: 40px;
+  -webkit-animation: fadein 3s;
+  animation: fadein 0.7s;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  position: relative;
+  right: 130px;
+  top: 40px;
+  -webkit-animation: fadein 0.4s;
+  animation: fadein 0.7s;
+}
+
+.pages {
+  height: 15px;
+  overflow: hidden;
+}
+
+.page-arrow {
+  height: 15px;
+}
+
+.first-page > img,
+.second-page > img {
+  margin: 0 5px;
+}
+
+.spray {
+  position: absolute;
+  left: 10px;
+  top: 65px;
+  width: 316px;
+  height: 703px;
+  z-index: 99;
+}
+
+@media screen and (min-width: 1025px) {
+  .greetings-text {
+    font-size: 2vw;
+  }
+  .greetings-description {
+    font-size: 7vw;
+  }
+}
