@@ -349,6 +349,7 @@ page 2 styles
 
 .page-2-text {
   line-height: 30px;
+  border-radius: 40px;
   padding: 25px;
   font-size: 22px;
   font-family: 'DinPRO';
