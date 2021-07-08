@@ -4,20 +4,6 @@ const SLIDES_NUMBER = CONTAINER.children.length;
 const HOME_BUTTON = document.querySelector('#home');
 const NEXT_BUTTON = document.querySelector('#what-next');
 
-/* transition between slides */
-CONTAINER.style.setProperty('--current-slide-index', '0');
-
-function next() {
-  CONTAINER.style.setProperty('--current-slide-index', '1');
-}
-
-function home() {
-  CONTAINER.style.setProperty('--current-slide-index', '0');
-}
-
-NEXT_BUTTON.addEventListener('click', next);
-HOME_BUTTON.addEventListener('click', home);
-
 /* vanilla js full page slider */
 let currentSlideIndex = 0;
 let xCoordinate = null;
@@ -34,15 +20,18 @@ function lock(e) {
 }
 
 function drag(e) {
-  if (e.target !== document.querySelector('.page-2-text-block')) {
-    e.preventDefault();
-  }
+  if (isLocked) {
+    if (e.target !== document.querySelector('.page-2-text-block')) {
+      e.preventDefault();
+    }
 
-  if (isLocked)
-    CONTAINER.style.setProperty(
-      '--x-difference',
-      `${Math.round(unify(e).clientX - xCoordinate)}px`
-    );
+    if (e.target !== document.querySelector('.page-2-text-block')) {
+      CONTAINER.style.setProperty(
+        '--x-difference',
+        `${Math.round(unify(e).clientX - xCoordinate)}px`
+      );
+    }
+  }
 }
 
 function move(e) {
@@ -81,7 +70,7 @@ function size() {
 size();
 CONTAINER.style.setProperty('--slides-number', SLIDES_NUMBER);
 
-addEventListener('resize', size, false);
+CONTAINER.addEventListener('resize', size, false);
 
 CONTAINER.addEventListener('mousedown', lock, false);
 CONTAINER.addEventListener('touchstart', lock, false);
@@ -92,26 +81,49 @@ CONTAINER.addEventListener('touchmove', drag, false);
 CONTAINER.addEventListener('mouseup', move, false);
 CONTAINER.addEventListener('touchend', move, false);
 
+/* transition between slides */
+CONTAINER.style.setProperty('--current-slide-index', '0');
+
+function next() {
+  currentSlideIndex = 1;
+  CONTAINER.style.setProperty('--current-slide-index', '1');
+}
+
+function home() {
+  document
+    .querySelector('.page-1')
+    .scrollIntoView({ block: 'center', inline: 'center', behavior: 'smooth' });
+  setTimeout((currentSlideIndex = 0), 100);
+  CONTAINER.style.setProperty('--current-slide-index', '0');
+}
+
+NEXT_BUTTON.addEventListener('click', next);
+HOME_BUTTON.addEventListener('click', home);
+
 /* open/close modal window */
-const modal = document.querySelector('#modal');
+const MODAL = document.querySelector('#modal');
 
-const btn = document.querySelector('#detail');
+const SHOW_MODAL_BUTTON = document.querySelector('#detail');
 
-const span = document.querySelector('.close');
+const CLOSE_MODAL_BUTTON = document.querySelector('.close');
 
-btn.addEventListener('click', function () {
-  modal.style.display = 'flex';
-});
+function showModal() {
+  MODAL.style.display = 'flex';
+}
 
-span.onclick = function () {
-  modal.style.display = 'none';
-};
+function closeModal() {
+  MODAL.style.display = 'none';
+}
 
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = 'none';
+SHOW_MODAL_BUTTON.addEventListener('click', showModal);
+
+CLOSE_MODAL_BUTTON.addEventListener('click', closeModal);
+
+window.addEventListener('click', function (event) {
+  if (event.target == MODAL) {
+    closeModal();
   }
-};
+});
 
 /* change ordered list pages in modal window */
 const BLOCK1 = document.querySelector('#block1');
@@ -147,3 +159,28 @@ function prevPage() {
 
 PREV_PAGE.addEventListener('click', prevPage);
 NEXT_PAGE.addEventListener('click', nextPage);
+
+/*
+ *show/hide page 2 sperms
+ */
+const SPERMS = document.querySelector('.page-2-sperms');
+
+function showSperms() {
+  setTimeout(() => {
+    if (currentSlideIndex == 1) {
+      SPERMS.style.display = 'block';
+    }
+  }, 250);
+}
+function hideSperms() {
+  setTimeout(() => {
+    if (currentSlideIndex == 0) {
+      SPERMS.style.display = 'none';
+    }
+  }, 250);
+}
+
+window.addEventListener('click', showSperms);
+window.addEventListener('touchend', showSperms);
+window.addEventListener('click', hideSperms);
+window.addEventListener('touchend', hideSperms);

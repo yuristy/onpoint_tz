@@ -79,13 +79,16 @@ body {
   overflow-x: hidden;
 }
 
+.root {
+  position: relative;
+}
+
 .container {
   display: flex;
   overflow-x: hidden;
   overflow-y: hidden;
   --slides-number: 1;
   align-items: center;
-
   width: 100%;
   width: calc(var(--slides-number) * 100%);
   height: 100vh;
@@ -98,6 +101,7 @@ body {
   );
   user-select: auto;
   pointer-events: all;
+  scroll-behavior: smooth;
 }
 
 .page-1,
@@ -106,19 +110,16 @@ body {
   min-width: 100vw;
   height: 100vh;
   position: relative;
+  width: 100%;
+  width: calc(100% / var(--slides-number));
+  user-select: auto;
+  pointer-events: auto;
 }
 
 .page-1 {
   background-image: url('images/page1/bg.png');
   background-color: #fff;
-  background-size: 100% 100%;
-}
-
-.container > div {
-  width: 100%;
-  width: calc(100% / var(--slides-number));
-  user-select: auto;
-  pointer-events: auto;
+  background-size: 102% 102%;
 }
 
 .smooth {
@@ -142,7 +143,7 @@ body {
   bottom: 3%;
   width: 58px;
   height: 12px;
-  z-index: 98;
+  z-index: 9999;
 }
 
 .greetings-block {
@@ -195,6 +196,7 @@ page 1 background images styles
   width: 74px;
   height: 72px;
   z-index: 4;
+  animation: bact1 2.5s linear alternate infinite;
 }
 
 .bact2 {
@@ -206,6 +208,7 @@ page 1 background images styles
   width: fit-content;
   height: fit-content;
   z-index: 12;
+  animation: bact2 7s linear alternate infinite;
 }
 
 .bact3 {
@@ -215,6 +218,7 @@ page 1 background images styles
   width: 63px;
   height: 58px;
   z-index: 15;
+  animation: bact3 11s linear infinite;
 }
 
 .bact4 {
@@ -228,11 +232,12 @@ page 1 background images styles
 
 .bact5 {
   position: absolute;
-  left: 861px;
-  top: 200px;
+  left: 700px;
+  top: 180px;
   width: 111px;
   height: 114px;
   z-index: 17;
+  animation: bact5 40s linear infinite;
 }
 
 .bact6 {
@@ -278,7 +283,7 @@ page 2 styles
 .page-2 {
   background-image: url('images/page2/bg.png');
   background-color: #fff;
-  background-size: 100% 100%;
+  background-size: 108% 108%;
   user-select: auto;
   pointer-events: auto;
 }
@@ -307,7 +312,6 @@ page 2 styles
 
 .page-2-text-block {
   overflow-y: scroll;
-  overflow-x: hidden;
   direction: rtl;
   margin-top: 100px;
   border-radius: 40px;
@@ -316,7 +320,7 @@ page 2 styles
   top: 100px;
   width: 775px;
   height: 445px;
-  z-index: 28;
+  z-index: 99;
   user-select: auto;
   pointer-events: auto;
 }
@@ -362,53 +366,78 @@ page 2 styles
 page 2 background images styles
 */
 
+.page-2-sperms {
+  display: none;
+}
+
 .sperm3 {
   opacity: 0.529;
   position: absolute;
-  left: 300px;
-  top: 30px;
+  left: 584px;
+  top: 70px;
+  width: 500px;
+  height: 200px;
   z-index: 22;
-  width: 731px;
-  height: 600px;
+  animation: sperm 3s forwards ease;
 }
 
 .sperm4 {
   opacity: 0.49;
   position: absolute;
-  left: 400px;
+  left: 889px;
   top: 411px;
+  width: 135px;
+  height: 90px;
   z-index: 24;
-  width: 731px;
-  height: 700px;
+  animation: sperm 3s forwards ease;
 }
 
 .sperm5 {
   opacity: 0.49;
   position: absolute;
-  left: 500px;
+  left: 710px;
   top: 74px;
-  width: 414px;
-  height: 400px;
+  width: 300px;
+  height: fit-content;
   z-index: 25;
+  animation: sperm 3s forwards ease;
 }
 
 .sperm6 {
   opacity: 0.49;
   position: absolute;
-  left: 600px;
+  position: absolute;
+  left: 886px;
   top: 515px;
-  width: 327px;
-  height: 300px;
+  width: 150px;
+  height: 80px;
   z-index: 26;
+  animation: sperm 3s forwards ease;
 }
 
 .sperm7 {
   position: absolute;
-  left: 50px;
-  top: 30px;
-  width: 1141px;
-  height: 1000px;
+  left: 366px;
+  top: 70px;
+  width: 700px;
+  height: 300px;
   z-index: 23;
+  animation: sperm 3s forwards ease;
+}
+
+/*
+page 2 animations
+*/
+
+@keyframes sperm {
+  from {
+    transform: translate(45px, 30px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 0.5;
+  }
 }
 
 /* 
@@ -419,9 +448,9 @@ page 3 styles
   background-image: url('images/page3/bg.png');
   background-color: #fff;
 
-  background-size: 100% 100%;
-  user-select: all;
-  pointer-events: all;
+  background-size: 110% 110%;
+  user-select: auto;
+  pointer-events: auto;
 }
 
 .page-3-block {
@@ -530,7 +559,7 @@ page 3 styles
 .modal {
   display: none;
   position: absolute;
-  z-index: 99;
+  z-index: 60;
   left: 0;
   top: 0;
   width: 100vw;
@@ -549,7 +578,7 @@ page 3 styles
   position: relative;
   background-color: #fff;
   margin: auto;
-  padding: 0;
+  padding: 2px 16px;
   border-radius: 40px;
   width: 80%;
   height: 75%;
@@ -573,9 +602,6 @@ page 3 styles
   cursor: pointer;
 }
 
-.modal-body {
-  padding: 2px 16px;
-}
 .number {
   font-size: 25px;
   font-family: 'Gilroy';
@@ -624,6 +650,7 @@ page 3 styles
   align-items: center;
   width: 100px;
   position: relative;
+  z-index: 99;
   right: 130px;
   top: 40px;
   -webkit-animation: fadein 0.4s;
@@ -644,13 +671,253 @@ page 3 styles
   margin: 0 5px;
 }
 
-.spray {
+/* page 3 animastions */
+.bottle {
   position: absolute;
   left: 10px;
   top: 65px;
   width: 316px;
   height: 703px;
-  z-index: 99;
+  z-index: 68;
+}
+
+.bubble1 {
+  opacity: 0.878;
+  position: absolute;
+  left: 77px;
+  top: 212px;
+  width: 34px;
+  height: 35px;
+  z-index: 67;
+  animation: bubble1 7s linear alternate infinite;
+}
+
+.bubble2 {
+  opacity: 0.929;
+  position: absolute;
+  left: 186px;
+  top: 317px;
+  width: 113px;
+  height: 112px;
+  z-index: 66;
+  animation: bubble2 7s linear alternate infinite;
+}
+
+.bubble3 {
+  opacity: 0.929;
+  position: absolute;
+  left: 170px;
+  top: 110px;
+  width: 37px;
+  height: 39px;
+  z-index: 65;
+  animation: bubble3 11s linear infinite;
+}
+
+.bubble4 {
+  opacity: 0.929;
+  position: absolute;
+  left: 230px;
+  top: 591px;
+  width: 62px;
+  height: 62px;
+  z-index: 64;
+  animation: bubble4 4s linear alternate infinite;
+}
+
+.bubble5 {
+  opacity: 0.929;
+  position: absolute;
+  left: 184px;
+  top: 190px;
+  width: 68px;
+  height: 70px;
+  z-index: 73;
+  animation: bubble5 7s linear infinite;
+}
+
+.bubble6 {
+  opacity: 0.929;
+  position: absolute;
+  left: 183px;
+  top: 703px;
+  width: 170px;
+  height: 80px;
+  z-index: 72;
+  animation: bubble6 7s linear infinite;
+}
+
+.bubble7 {
+  opacity: 0.929;
+  position: absolute;
+  left: 10px;
+  top: 454px;
+  width: 34px;
+  height: 33px;
+  z-index: 71;
+  animation: bubble7 5s linear alternate infinite;
+}
+
+.bubble8 {
+  opacity: 0.929;
+  position: absolute;
+  left: 25px;
+  top: 554px;
+  width: 75px;
+  height: 75px;
+  z-index: 70;
+  animation: bubble8 7s linear infinite;
+}
+
+/* page 1 animations */
+
+@keyframes bact1 {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-7px, -25px);
+  }
+}
+
+@keyframes bact2 {
+  0% {
+    transform: translate(0, 0) scale(110%);
+  }
+  50% {
+    transform: translate(-10px, -10px) scale(160%);
+  }
+  100% {
+    transform: translate(-15px, -25px) scale(140%);
+  }
+}
+
+@keyframes bact3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(100%);
+  }
+  33% {
+    transform: translate(30px, 5px) scale(100%);
+  }
+  66% {
+    transform: translate(20px, 10px) scale(120%);
+  }
+}
+
+@keyframes bact5 {
+  from {
+    transform: rotate(360deg) translateX(5px) translateY(-40px);
+  }
+  to {
+    transform: rotate(0deg) translateX(5px) translateY(-40px);
+  }
+}
+
+/* page 3 animations */
+@keyframes bubble1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  40% {
+    transform: translate(5px, 5px);
+  }
+  100% {
+    transform: translate(30px, 10px);
+  }
+}
+
+@keyframes bubble2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(15px, 15px) scale(85%);
+  }
+  100% {
+    transform: translate(5px, 20px) scale(115%);
+  }
+}
+
+@keyframes bubble3 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20%,
+  75% {
+    transform: translate(15px, 25px);
+  }
+  45% {
+    transform: translate(5px, -10px);
+  }
+  90% {
+    transform: translate(5px, 10px) scale(120%);
+  }
+}
+
+@keyframes bubble4 {
+  from {
+    transform: translate(0, 0) scale(100%);
+  }
+  to {
+    transform: translate(15px, -10px) scale(85%);
+  }
+}
+
+@keyframes bubble5 {
+  0%,
+  50%,
+  100% {
+    transform: translate(0, 0) scale(100%);
+  }
+  25% {
+    transform: translate(10px, 10px) scale(120%);
+  }
+  75% {
+    transform: translate(10px, -10px) scale(80%);
+  }
+}
+
+@keyframes bubble6 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(90%);
+  }
+  33% {
+    transform: translate(-10px, 5px) scale(110%);
+  }
+  66% {
+    transform: translate(-20px, -10px);
+  }
+}
+
+@keyframes bubble7 {
+  0% {
+    transform: translate(0, 0) scale(100%);
+  }
+  75% {
+    transform: translate(20px, -20px) scale(120%);
+  }
+  100% {
+    transform: translate(30px, -15px) scale(100%);
+  }
+}
+
+@keyframes bubble8 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(100%);
+  }
+  25% {
+    transform: translate(15px, 10px);
+  }
+  50% {
+    transform: translate(10px, 15px) scale(120%);
+  }
+  75% {
+    transform: translate(5px, 30px) scale(100%);
+  }
 }
 
 @media screen and (min-width: 1025px) {
